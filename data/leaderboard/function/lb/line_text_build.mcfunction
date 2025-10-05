@@ -11,7 +11,15 @@ $data modify storage leaderboard:line_nbt text set value {"text":"","extra":[{"t
 $execute if data storage leaderboard:leaderboard_nbt {data:{show_heads:1}} run data modify storage leaderboard:line_nbt text.extra insert 1 value {"player":{"name":"$(name)"}} 
 
 # Normal score
-$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value)","color":"red"}
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:0}} unless data storage leaderboard:leaderboard_nbt {data:{currency_mode:1}} run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(value)","color":"red"}
+
+# Currency score
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:0,currency_mode:1}} if data storage leaderboard:line {currency_negative:1} run data modify storage leaderboard:line_nbt text.extra append value {"text":"-","color":"red"}
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:0,currency_mode:1}} run data modify storage leaderboard:line_nbt text.extra append value {"text":"$","color":"red"}
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:0,currency_mode:1}} run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(currency_major)","color":"red"}
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:0,currency_mode:1}} run data modify storage leaderboard:line_nbt text.extra append value {"text":".","color":"red"}
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:0,currency_mode:1}} unless data storage leaderboard:line {currency_minor_pad:1} run data modify storage leaderboard:line_nbt text.extra append value {"text":"$(currency_minor)","color":"red"}
+$execute if data storage leaderboard:leaderboard_nbt {data:{time_mode:0,currency_mode:1}} if data storage leaderboard:line {currency_minor_pad:1} run data modify storage leaderboard:line_nbt text.extra append value {"text":"0$(currency_minor)","color":"red"}
 
 # Time
 # Negative time
