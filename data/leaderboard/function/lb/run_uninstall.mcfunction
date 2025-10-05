@@ -30,6 +30,8 @@ data remove storage leaderboard:line color
 data remove storage leaderboard:line bold_name
 data remove storage leaderboard:line close_background
 
+data remove storage leaderboard:currency_call amount
+
 
 data remove storage leaderboard:init_edit reverse_order
 data remove storage leaderboard:init_edit display_name
