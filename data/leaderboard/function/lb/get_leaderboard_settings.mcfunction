@@ -5,7 +5,7 @@
  # Created by DJT3.
 ##
 
-data merge storage leaderboard:init_edit {reverse_order:0,no_zero:0,medal_color:0,always_show_closest_player:0,time_mode:0}
+data merge storage leaderboard:init_edit {reverse_order:0,no_zero:0,medal_color:0,always_show_closest_player:0,time_mode:0,currency_mode:0}
 
 data modify storage leaderboard:init_edit display_name set from entity @s text
 data modify storage leaderboard:init_edit billboard set from entity @s billboard
@@ -25,5 +25,6 @@ data modify storage leaderboard:init_edit no_zero set from entity @s data.no_zer
 data modify storage leaderboard:init_edit medal_color set from entity @s data.medal_color
 
 data modify storage leaderboard:init_edit time_mode set from entity @s data.time_mode
+data modify storage leaderboard:init_edit currency_mode set from entity @s data.currency_mode
 
 
